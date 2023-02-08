@@ -1,5 +1,5 @@
 import Header from "../../components/Header";
-import { MainPage } from "./style";
+import { MainPage } from "../PokemonsListPage/style";
 
 function PokedexPage() {
 

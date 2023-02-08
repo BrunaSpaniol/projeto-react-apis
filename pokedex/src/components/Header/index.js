@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/pokemonLogo.svg";
-import { HeaderContainer, ButtonGoToPage, ButtonReturnPage } from "./style";
+import { HeaderContainer, ButtonGoToPage, ButtonReturnPage, LogoPokemon } from "./style";
 import { handleHome } from "../../routes/cordinator";
 
 function Header({ headerProps }) {
@@ -20,7 +20,7 @@ function Header({ headerProps }) {
           {'Todos Pokémons'}
         </ButtonReturnPage>
       )}
-      <img src={logo} alt="" />
+      <LogoPokemon src={logo} alt="" />
       {page !== "pokedex" && (
         <ButtonGoToPage onClick={buttonFunction}>{textButton}</ButtonGoToPage>
       )}

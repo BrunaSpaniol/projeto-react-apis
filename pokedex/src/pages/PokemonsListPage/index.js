@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
+import PokemonCard from "../../components/PokemonCard";
+import { ContainerListPage, MainPage, PageTitle } from "./style";
 import { handlePokedex } from "../../routes/cordinator";
-import { MainPage } from "../PokedexPage/style";
+
 
 function PokemonsListPage() {
   const navigate = useNavigate();
@@ -11,12 +13,14 @@ function PokemonsListPage() {
     textButton: "Pokedex",
   };
   return (
-    <>
+    <ContainerListPage>
       <Header headerProps={headerProps} />
       <MainPage>
-        <h1>Todos os Pokemons</h1>
+        <PageTitle>Todos os Pokemons</PageTitle>
+        <PokemonCard/>
+        <PokemonCard/>
       </MainPage>
-    </>
+    </ContainerListPage>
   );
 }
 export default PokemonsListPage;
