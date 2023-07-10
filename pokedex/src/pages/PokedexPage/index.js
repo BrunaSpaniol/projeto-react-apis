@@ -1,13 +1,37 @@
+import { useContext } from "react";
+
+import { GlobalContext } from "../../global/GlobalContext";
 import Header from "../../components/Header";
-import { MainPage } from "../PokemonsListPage/style";
+import {
+  MainPage,
+  PageTitle,
+  PokemonsCardContainer,
+} from "../PokemonsListPage/style";
+
+import PokemonCard from "../../components/PokemonCard";
 
 function PokedexPage() {
+  const { pokemonsList, setPokemonsList, loading, setLoading } =
+    useContext(GlobalContext);
+
+  function renderPokemons() {
+    return pokemonsList?.map(({ order, name, sprites, types }) => {
+      return (
+        <PokemonCard
+          pokemon={{ order, name, sprites, types }}
+          key={{ order }}
+          page="pokedex"
+        />
+      );
+    });
+  }
 
   return (
     <>
-      <Header />
+      <Header page="pokedex" />
       <MainPage>
-      <h1>Meus pokemons</h1>
+        <PageTitle>Meus pokemons</PageTitle>
+        <PokemonsCardContainer>{renderPokemons()}</PokemonsCardContainer>
       </MainPage>
     </>
   );

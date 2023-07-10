@@ -1,13 +1,16 @@
 import React from "react";
-import { GlobalStyled } from "./GlobalStyled";
 import Router from "./routes/Router";
+
+import { GlobalState } from "./global/GlobalState";
+import { GlobalStyled } from "./GlobalStyled";
+
 
 function App() {
   return (
-    <>
+    <GlobalState>
       <GlobalStyled />
       <Router />
-    </>
+    </GlobalState>
   );
 }
 

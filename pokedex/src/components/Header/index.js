@@ -1,28 +1,40 @@
 import { useNavigate } from "react-router-dom";
-import logo from "../../assets/pokemonLogo.svg";
-import { HeaderContainer, ButtonGoToPage, ButtonReturnPage, LogoPokemon } from "./style";
-import { handleHome } from "../../routes/cordinator";
+import { handleHome, handlePokedex } from "../../routes/cordinator";
 
-function Header({ headerProps }) {
-    const navigate = useNavigate()
-  const {
-    page,
-    buttonFunction,
-    textButton,
-    buttonFunctionDelete,
-    textButtonDelete,
-  } = headerProps;
+import logo from "../../assets/pokemonLogo.svg";
+import returnIcon from "../../assets/returnIcon.svg";
+import {
+  HeaderContainer,
+  ButtonGoToPage,
+  ButtonReturnPage,
+  ButtonRemovePokedex,
+  LogoPokemon,
+  ReturnIcon,
+} from "./style";
+
+function Header({ page }) {
+  const navigate = useNavigate();
 
   return (
     <HeaderContainer>
       {page !== "pokemonsList" && (
-        <ButtonReturnPage onClick={() => handleHome(navigate)}>
-          {'Todos Pokémons'}
-        </ButtonReturnPage>
+        <>
+        <ReturnIcon alt={"ícone para voltar à página anterior"} src={returnIcon}/>
+          <ButtonReturnPage onClick={() => handleHome(navigate)}>
+            {"Todos Pokémons"}
+          </ButtonReturnPage>
+        </>
       )}
       <LogoPokemon src={logo} alt="" />
-      {page !== "pokedex" && (
-        <ButtonGoToPage onClick={buttonFunction}>{textButton}</ButtonGoToPage>
+      {page === "pokemonsList" && (
+        <ButtonGoToPage onClick={() => handlePokedex(navigate)}>
+          {"Pokedex"}
+        </ButtonGoToPage>
+      )}
+      {page === "pokemonsDetails" && (
+        <ButtonRemovePokedex onClick={() => handleHome(navigate)}>
+          {"Excluir da Pokedex"}
+        </ButtonRemovePokedex>
       )}
     </HeaderContainer>
   );

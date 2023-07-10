@@ -10,12 +10,13 @@ export const MainPage = styled.main`
   padding-left: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: baseline;
   justify-content: flex-start;
   flex-wrap: wrap;
   gap: 2rem;
   width: 100vw;
   min-height: 81.527vw;
+  max-height: 200vw;
   background-color: #5e5e5e;
 `;
 
@@ -26,4 +27,10 @@ export const PageTitle = styled.h1`
   font-size: 3rem;
   line-height: 4.5rem;
   padding-bottom: 1.5rem;
-`
+`;
+export const PokemonsCardContainer = styled.article`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 1.25rem;
+  grid-row-gap: 3.31rem;
+`;

@@ -114,6 +114,7 @@ export const ButtonCatch = styled.button`
   justify-content: center;
   align-items: center;
   padding: 4px 10px;
+  z-index: 2;
 
   font-family: "Poppins";
   font-style: normal;
@@ -121,4 +122,29 @@ export const ButtonCatch = styled.button`
   font-size: 16px;
 
   color: #0f0f0f;
+`;
+
+export const ButtonRemove = styled.button`
+  position: absolute;
+  right: 23px;
+  bottom: 20px;
+  width: 9.125rem;
+  height: 2.375rem;
+
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 10px;
+  z-index: 2;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  color: white;
+
+  border-radius: 0.5rem;
+  background: #ff6262;
 `;
