@@ -11,16 +11,17 @@ import {
 import PokemonCard from "../../components/PokemonCard";
 
 function PokedexPage() {
-  const { pokemonsList, setPokemonsList, loading, setLoading } =
-    useContext(GlobalContext);
+  const { pokedex,  addToPokedex, removeFromPokedex} = useContext(GlobalContext);
 
   function renderPokemons() {
-    return pokemonsList?.map(({ order, name, sprites, types }) => {
+    return pokedex?.map(({ order, name, sprites, types }) => {
       return (
         <PokemonCard
           pokemon={{ order, name, sprites, types }}
           key={{ order }}
           page="pokedex"
+          addToPokedex={addToPokedex}
+          removeFromPokedex={removeFromPokedex}
         />
       );
     });
@@ -30,7 +31,7 @@ function PokedexPage() {
     <>
       <Header page="pokedex" />
       <MainPage>
-        <PageTitle>Meus pokemons</PageTitle>
+        <PageTitle>Meus Pokemons</PageTitle>
         <PokemonsCardContainer>{renderPokemons()}</PokemonsCardContainer>
       </MainPage>
     </>

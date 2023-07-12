@@ -10,8 +10,6 @@ export const MainPage = styled.main`
   padding-left: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: baseline;
-  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 2rem;
   width: 100vw;

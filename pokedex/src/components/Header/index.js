@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { handleHome, handlePokedex } from "../../routes/cordinator";
 
 import logo from "../../assets/pokemonLogo.svg";
@@ -12,26 +12,31 @@ import {
   ReturnIcon,
 } from "./style";
 
-function Header({ page }) {
+function Header() {
   const navigate = useNavigate();
+
+  const location = useLocation();
 
   return (
     <HeaderContainer>
-      {page !== "pokemonsList" && (
+      {location.pathname !== "/" && (
         <>
-        <ReturnIcon alt={"ícone para voltar à página anterior"} src={returnIcon}/>
+          <ReturnIcon
+            alt={"ícone para voltar à página anterior"}
+            src={returnIcon}
+          />
           <ButtonReturnPage onClick={() => handleHome(navigate)}>
             {"Todos Pokémons"}
           </ButtonReturnPage>
         </>
       )}
       <LogoPokemon src={logo} alt="" />
-      {page === "pokemonsList" && (
+      {location.pathname === "/" && (
         <ButtonGoToPage onClick={() => handlePokedex(navigate)}>
           {"Pokedex"}
         </ButtonGoToPage>
       )}
-      {page === "pokemonsDetails" && (
+      {location.pathname === "/detail" && (
         <ButtonRemovePokedex onClick={() => handleHome(navigate)}>
           {"Excluir da Pokedex"}
         </ButtonRemovePokedex>

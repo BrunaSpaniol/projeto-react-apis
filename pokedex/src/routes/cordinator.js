@@ -1,4 +1,4 @@
-// import { useNavigate } from "react-router-dom"; => importa no componente/ page 
+// import { useNavigate } from "react-router-dom"; => importa no componente/ page
 
 //const navigate = useNavigate() => isso vc chama no componente que vai ter essas funções.
 
@@ -10,8 +10,8 @@ export function handlePokedex(navigate) {
   navigate("/pokedex");
 }
 
-export function handleDetail(navigate) {
-  navigate("/detail");
+export function handleDetail(navigate, pokemonName) {
+  navigate(`/detail/${pokemonName}`);
 }
 
 //navigate(-1) => volta uma página

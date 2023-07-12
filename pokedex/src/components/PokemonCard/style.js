@@ -4,11 +4,17 @@ export const PokemonCardContainer = styled.div`
   position: relative;
   display: flex;
   margin-bottom: 2vw;
-  width: 30.55vw;
-  height: 14.5833vw;
+  width: 27.5rem;
+  height: 13.125rem;
 
-  background: #729f92;
+  background: ${(props) => props.color};
   border-radius: 12px;
+`;
+
+export const DivContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr 0.5fr);
+  align-items: flex-start;
 `;
 
 export const ImgBackground = styled.img`
@@ -20,82 +26,66 @@ export const ImgBackground = styled.img`
 `;
 
 export const ImgPokemon = styled.img`
-  z-index: 1;
   position: absolute;
-  width: 13.4027vw;
-  height: 13.4027vw;
-  right: 0.5vw;
+  width: 12.0625rem;
+  height: 12.0625rem;
+  justify-self: flex-end;
   top: -4vw;
 `;
 
+export const PokemonInfo = styled.section`
+  display: flex;
+  flex-direction: column;
+
+  margin-left: 1.44rem;
+  margin-top: 1.56rem;
+`;
+
 export const PokeType = styled.img`
-  max-width: 100px;
-  width: 99px;
-  height: 31px;
-  margin-right: 5px;
   overflow: hidden;
 `;
 
 export const TypesContainer = styled.div`
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  left: 20.5px;
-  top: 89px;
+  display: grid;
+  width: max-content;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: flex-end;
+  justify-content: space-between;
+
+  margin-bottom: 1.5rem;
 `;
 
 export const PokeId = styled.p`
-  position: absolute;
-  width: 30px;
-  height: 19px;
-  left: 23px;
-  top: 25px;
-
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 1.2rem;
 
   color: white;
 `;
 
 export const PokeName = styled.h2`
-  position: absolute;
-  width: 159px;
-  height: 39px;
-  left: 23px;
-  top: 40px;
+  margin-bottom: 0.85rem;
 
   font-family: "Inter";
-  font-style: normal;
   font-weight: 700;
-  font-size: 32px;
   line-height: 39px;
+  font-size: 2.5rem;
 
   color: white;
 `;
 
 export const DetailsLink = styled.a`
-  width: 74px;
-  height: 24px;
-  position: absolute;
-  left: 23px;
-  bottom: 20px;
+  cursor: pointer;
 
   font-family: "Poppins";
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1rem;
 
   text-decoration-line: underline;
 
   color: #ffffff;
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
 `;
 
 export const ButtonCatch = styled.button`

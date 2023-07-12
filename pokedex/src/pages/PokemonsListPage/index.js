@@ -1,20 +1,37 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import Header from "../../components/Header";
 import PokemonCard from "../../components/PokemonCard";
-import { ContainerListPage, MainPage, PageTitle, PokemonsCardContainer } from "./style";
+import {
+  ContainerListPage,
+  MainPage,
+  PageTitle,
+  PokemonsCardContainer,
+} from "./style";
 import { GlobalContext } from "../../global/GlobalContext";
 
 function PokemonsListPage() {
-  const { pokemonsList, setPokemonsList, loading, setLoading } =
+  const { pokemonsList, pokedex, addToPokedex, removeFromPokedex } =
     useContext(GlobalContext);
 
+  const filteredPokelist = useMemo(
+    () =>
+      pokemonsList.filter(
+        (pokemonInList) =>
+          !pokedex.find(
+            (pokemonInPokedex) => pokemonInList.name === pokemonInPokedex.name
+          )
+      ),
+    [pokemonsList, pokedex]
+  );
+
   function renderPokemons() {
-    return pokemonsList?.map(({ order, name, sprites, types }) => {
+    return filteredPokelist?.map(({ order, name, sprites, types }) => {
       return (
         <PokemonCard
           pokemon={{ order, name, sprites, types }}
-          key={{ order }}
-          page="pokemonsList"
+          key={Math.random()}
+          addToPokedex={addToPokedex}
+          removeFromPokedex={removeFromPokedex}
         />
       );
     });

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { handleDetail } from "../../routes/cordinator";
 import {
@@ -12,37 +12,70 @@ import {
   DetailsLink,
   ButtonCatch,
   ButtonRemove,
+  DivContainer,
+  PokemonInfo,
 } from "./style";
 import ImgMask from "../../assets/cardImgBackground.svg";
-import poketype from "./../../assets/type.svg";
+import { getTypes } from "../../utils/getPokemonType";
+import { getColors } from "../../utils/getColors";
 
-function PokemonCard({ pokemon, page }) {
+function PokemonCard({
+  pokemon,
+  removeFromPokedex,
+  addToPokedex,
+}) {
   const navigate = useNavigate();
+  const location = useLocation();
 
   function renderButton() {
-    if (page === "pokemonsList") {
-      return <ButtonCatch>Capturar</ButtonCatch>;
+    if (location.pathname === "/") {
+      return (
+        <ButtonCatch onClick={() => addToPokedex(pokemon)}>Capturar</ButtonCatch>
+      );
     }
-    if (page === "pokedex") {
-      return <ButtonRemove>Excluir</ButtonRemove>;
-    }
+
+    return (
+      <ButtonRemove onClick={() => removeFromPokedex(pokemon)}>
+        Excluir
+      </ButtonRemove>
+    );
   }
 
   return (
-    <PokemonCardContainer>
+    <PokemonCardContainer color={getColors(pokemon?.types[0]?.type?.name)}>
       <ImgBackground src={ImgMask} alt={"imagem pokemon bg"} />
-      <ImgPokemon
-        src={pokemon.sprites.other["official-artwork"].front_default}
-        alt={"imagem do pokemon"}
-      />
-      <PokeId>{`#${pokemon.order}`}</PokeId>
-      <PokeName>{pokemon.name}</PokeName>
-      <TypesContainer>
-        <PokeType src={poketype} alt={"tipo do pokemon"} />
-        <PokeType src={poketype} alt={"tipo do pokemon"} />
-      </TypesContainer>
-      <DetailsLink onClick={() => handleDetail(navigate)}>Detalhes</DetailsLink>
-      {renderButton()}
+
+      <DivContainer>
+        <PokemonInfo>
+          <PokeId>{`#${pokemon.order}`}</PokeId>
+
+          <PokeName>{pokemon.name}</PokeName>
+
+          <TypesContainer>
+            {pokemon?.types?.map(({ type }) => {
+              return (
+                <PokeType
+                  key={type?.name}
+                  src={getTypes(type?.name)}
+                  alt={"tipo do pokemon"}
+                />
+              );
+            })}
+          </TypesContainer>
+
+          <DetailsLink onClick={() => handleDetail(navigate, pokemon?.name)}>
+            Detalhes
+          </DetailsLink>
+        </PokemonInfo>
+
+        <>
+          <ImgPokemon
+            src={pokemon.sprites.other["official-artwork"].front_default}
+            alt={"imagem do pokemon"}
+          />
+          {renderButton()}
+        </>
+      </DivContainer>
     </PokemonCardContainer>
   );
 }

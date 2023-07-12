@@ -37,7 +37,7 @@ export const ButtonGoToPage = styled.button`
 `;
 
 export const ButtonReturnPage = styled.button`
-  position: fixed;
+  position: absolute;
   cursor: pointer;
   left: 3%;
   border: none;
@@ -76,7 +76,7 @@ export const ButtonRemovePokedex = styled.button`
 `;
 
 export const ReturnIcon = styled.img`
-  position: fixed;
+  position: absolute;
   left: 1%;
   width: 1.5625rem;
   height: 1.5625rem;

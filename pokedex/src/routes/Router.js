@@ -8,7 +8,9 @@ function Router() {
     <BrowserRouter>
       <Routes>
         <Route index element={<PokemonsListPage />} />
-        <Route path="/detail" element={<PokemonDetailPage />} />
+        <Route path="/detail/">
+          <Route path=":pokemonName" element={<PokemonDetailPage />} />
+        </Route>
         <Route path="/pokedex" element={<PokedexPage />} />
         {/* <Route path="error" element={<ErrorPage/>} /> */}
       </Routes>
